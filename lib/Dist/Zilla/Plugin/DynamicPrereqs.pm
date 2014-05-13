@@ -4,8 +4,8 @@ package Dist::Zilla::Plugin::DynamicPrereqs;
 BEGIN {
   $Dist::Zilla::Plugin::DynamicPrereqs::AUTHORITY = 'cpan:ETHER';
 }
-# git description: d7e1cae
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.001';
+# git description: v0.001-3-ge696192
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.002';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # vim: set ts=8 sw=4 tw=78 et :
 
@@ -99,7 +99,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -121,8 +121,8 @@ This is a L<Dist::Zilla> plugin that inserts code into your F<Makefile.PL> to
 indicate dynamic (installer-side) prerequisites.
 
 Code is inserted immediately after the declarations for C<%WriteMakefileArgs>
-and C<%FallbackPrereqs>, before they are conditionally modified when an older
-L<ExtUtils::MakeMaker> is installed.  This gives you an opportunity to add to
+and C<%FallbackPrereqs>, before they are conditionally modified (when an older
+L<ExtUtils::MakeMaker> is installed).  This gives you an opportunity to add to
 the C<WriteMakefile> arguments: C<PREREQ_PM>, C<BUILD_REQUIRES>, and
 C<TEST_REQUIRES>, and therefore modify the prerequisites in the user's
 F<MYMETA.yml> and F<MYMETA.json> based on conditions found on the user's system.

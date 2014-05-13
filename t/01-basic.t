@@ -37,7 +37,7 @@ is(
     exception { $tzil->build },
     undef,
     'build proceeds normally',
-) or diag "log messages:\n", join("\n", @{ $tzil->log_messages });
+) or diag 'got log messages: ', explain $tzil->log_messages;
 
 my $build_dir = path($tzil->tempdir)->child('build');
 
@@ -94,7 +94,7 @@ cmp_deeply(
     $mymeta_json,
     json(superhashof({
         dynamic_config => 0,
-        prereqs => {
+        prereqs => subhashof({
             configure => {
                 requires => {
                     'ExtUtils::MakeMaker' => ignore,
@@ -106,9 +106,9 @@ cmp_deeply(
                     'Test::More' => '0.123',
                 },
             },
-            build => ignore,    # always added by EUMM?
-            test => ignore,     # always added by EUMM?
-        },
+            build => ignore,    # added by [MakeMaker]; removed if
+            test => ignore,     # EUMM version <= 6.63_02
+        }),
     })),
     'dynamic_config reset to 0 in MYMETA; dynamic prereqs have been added',
 )

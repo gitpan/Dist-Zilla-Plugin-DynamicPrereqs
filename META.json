@@ -27,7 +27,7 @@
       },
       "develop" : {
          "recommends" : {
-            "Dist::Zilla::PluginBundle::Author::ETHER" : "0.062"
+            "Dist::Zilla::PluginBundle::Author::ETHER" : "0.063"
          },
          "requires" : {
             "Dist::Zilla" : "5.016",
@@ -94,7 +94,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::DynamicPrereqs" : {
          "file" : "lib/Dist/Zilla/Plugin/DynamicPrereqs.pm",
-         "version" : "0.001"
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
@@ -110,7 +110,7 @@
          "web" : "https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs"
       }
    },
-   "version" : "0.001",
+   "version" : "0.002",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.019011"
@@ -463,7 +463,7 @@
          {
             "class" : "Dist::Zilla::Plugin::GithubMeta",
             "name" : "@Author::ETHER/GithubMeta",
-            "version" : "0.44"
+            "version" : "0.46"
          },
          {
             "class" : "Dist::Zilla::Plugin::AutoMetaResources",
@@ -707,7 +707,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "v0.001",
+                  "tag" : "v0.002",
                   "tag_format" : "v%v%t",
                   "tag_message" : "v%v%t",
                   "time_zone" : "local"

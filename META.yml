@@ -31,7 +31,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::DynamicPrereqs:
     file: lib/Dist/Zilla/Plugin/DynamicPrereqs.pm
-    version: '0.001'
+    version: '0.002'
 requires:
   Dist::Zilla::Plugin::MakeMaker: '5.001'
   Dist::Zilla::Role::AfterBuild: '0'
@@ -48,7 +48,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-DynamicPrereqs
   homepage: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs
   repository: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs.git
-version: '0.001'
+version: '0.002'
 x_Dist_Zilla:
   perl:
     version: '5.019011'
@@ -323,7 +323,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GithubMeta
       name: '@Author::ETHER/GithubMeta'
-      version: '0.44'
+      version: '0.46'
     -
       class: Dist::Zilla::Plugin::AutoMetaResources
       name: '@Author::ETHER/AutoMetaResources'
@@ -505,7 +505,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v0.001
+          tag: v0.002
           tag_format: v%v%t
           tag_message: v%v%t
           time_zone: local
