@@ -4,8 +4,8 @@ package Dist::Zilla::Plugin::DynamicPrereqs;
 BEGIN {
   $Dist::Zilla::Plugin::DynamicPrereqs::AUTHORITY = 'cpan:ETHER';
 }
-# git description: v0.001-3-ge696192
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.002';
+# git description: v0.002-2-g04f2b86
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.003';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # vim: set ts=8 sw=4 tw=78 et :
 
@@ -17,6 +17,7 @@ with
 ;
 use MooseX::SlurpyConstructor 1.2;
 use List::Util 'first';
+use Module::Runtime 'module_notional_filename';
 use namespace::autoclean;
 
 has raw => (
@@ -53,6 +54,10 @@ sub after_build
 sub setup_installer
 {
     my $self = shift;
+
+    $self->log_fatal('[MakeMaker::Awesome] must be at least version 0.19 to be used with [DynamicPrereqs]')
+        if $INC{module_notional_filename('Dist::Zilla::Plugin::MakeMaker::Awesome')}
+            and not eval { Dist::Zilla::Plugin::MakeMaker::Awesome->VERSION('0.19') };
 
     if (my @extra_keys = $self->_extra_keys)
     {
@@ -99,7 +104,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

@@ -53,7 +53,7 @@ my $static_prereqs = do { my $x = {
                                         'Dist::Zilla::PluginBundle::Author::ETHER' => '0.063'
                                       },
                       'requires' => {
-                                      'Dist::Zilla' => '5.016',
+                                      'Dist::Zilla' => '5.017',
                                       'Dist::Zilla::Plugin::Bootstrap::lib' => '0',
                                       'Dist::Zilla::Plugin::DynamicPrereqs' => '0',
                                       'Dist::Zilla::Plugin::GitHub::Update' => '0',
@@ -85,6 +85,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Role::InstallTool' => '0',
                                       'Dist::Zilla::Role::MetaProvider' => '0',
                                       'List::Util' => '0',
+                                      'Module::Runtime' => '0',
                                       'Moose' => '0',
                                       'MooseX::SlurpyConstructor' => '1.2',
                                       'namespace::autoclean' => '0',
