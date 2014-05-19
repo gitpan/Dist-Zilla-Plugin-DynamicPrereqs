@@ -4,8 +4,8 @@ package Dist::Zilla::Plugin::DynamicPrereqs;
 BEGIN {
   $Dist::Zilla::Plugin::DynamicPrereqs::AUTHORITY = 'cpan:ETHER';
 }
-# git description: v0.002-2-g04f2b86
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.003';
+# git description: v0.003-2-g1e05a2d
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.004';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # vim: set ts=8 sw=4 tw=78 et :
 
@@ -104,7 +104,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
