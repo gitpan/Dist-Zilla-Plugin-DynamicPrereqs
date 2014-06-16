@@ -4,9 +4,10 @@ package Dist::Zilla::Plugin::DynamicPrereqs;
 BEGIN {
   $Dist::Zilla::Plugin::DynamicPrereqs::AUTHORITY = 'cpan:ETHER';
 }
-# git description: v0.003-2-g1e05a2d
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.004';
+# git description: v0.004-4-gd3a199d
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.005';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
+# KEYWORDS: plugin distribution metadata MYMETA prerequisites Makefile.PL dynamic
 # vim: set ts=8 sw=4 tw=78 et :
 
 use Moose;
@@ -77,7 +78,7 @@ sub setup_installer
     # TODO: if marker cannot be found, fall back to looking for just
     # %WriteMakefileArgs -- this requires modifying the content too.
     $self->log_fatal('failed to find position in Makefile.PL to munge!')
-        if $content !~ m'^my %FallbackPrereqs = \(\n(?:[^;]+)^\);$'mg;
+        if $content !~ m'^my %FallbackPrereqs = \((?:\n[^;]+^)?\);$'mg;
 
     my $pos = pos($content);
 
@@ -104,7 +105,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 

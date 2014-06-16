@@ -16,6 +16,7 @@ my @files = (
     't/05-overshadow-static.t',
     't/06-makemaker-awesome.t',
     't/07-unknown-arguments.t',
+    't/08-empty-prereqs.t',
     'xt/author/00-compile.t',
     'xt/author/pod-spell.t',
     'xt/release/changes_has_content.t',
