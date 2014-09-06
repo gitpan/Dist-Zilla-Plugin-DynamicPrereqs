@@ -54,15 +54,16 @@ ok(-e $file, 'Makefile.PL created');
 my $makefile = $file->slurp_utf8;
 unlike($makefile, qr/[^\S\n]\n/m, 'no trailing whitespace in modified file');
 
+my $version = Dist::Zilla::Plugin::DynamicPrereqs->VERSION || '<self>';
 isnt(
     index(
         $makefile,
-        "\n\n"
-        . q|$WriteMakefileArgs{PREREQ_PM}{'Test::More'} = $FallbackPrereqs{'Test::More'} = '0.123'|
-        . "\n"
-        . q|if eval { require Test::More; 1 };|
-        . "\n\n"
-    ),
+        <<CONTENT),
+# inserted by Dist::Zilla::Plugin::DynamicPrereqs $version
+\$WriteMakefileArgs{PREREQ_PM}{'Test::More'} = \$FallbackPrereqs{'Test::More'} = '0.123'
+if eval { require Test::More; 1 };
+
+CONTENT
     -1,
     'code inserted into Makefile.PL from first plugin',
 ) or diag "found Makefile.PL content:\n", $makefile;
@@ -70,12 +71,12 @@ isnt(
 isnt(
     index(
         $makefile,
-        "\n\n"
-        . q|$WriteMakefileArgs{PREREQ_PM}{'strict'} = $FallbackPrereqs{'strict'} = '0.001'|
-        . "\n"
-        . q|if eval { require strict; 1 };|
-        . "\n\n"
-    ),
+        <<CONTENT),
+# inserted by Dist::Zilla::Plugin::DynamicPrereqs $version
+\$WriteMakefileArgs{PREREQ_PM}{'strict'} = \$FallbackPrereqs{'strict'} = '0.001'
+if eval { require strict; 1 };
+
+CONTENT
     -1,
     'code inserted into Makefile.PL from second plugin',
 ) or diag "found Makefile.PL content:\n", $makefile;
@@ -110,5 +111,8 @@ cmp_deeply(
 )
 or diag "found MYMETA.json content:\n", $mymeta_json,
     "found Makefile.PL content:\n", $makefile;
+
+diag 'got log messages: ', explain $tzil->log_messages
+    if not Test::Builder->new->is_passing;
 
 done_testing;

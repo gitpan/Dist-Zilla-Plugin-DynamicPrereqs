@@ -1,11 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::DynamicPrereqs;
-BEGIN {
-  $Dist::Zilla::Plugin::DynamicPrereqs::AUTHORITY = 'cpan:ETHER';
-}
-# git description: v0.004-4-gd3a199d
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.005';
+# git description: v0.005-8-g1759da5
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.006';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # KEYWORDS: plugin distribution metadata MYMETA prerequisites Makefile.PL dynamic
 # vim: set ts=8 sw=4 tw=78 et :
@@ -81,11 +78,13 @@ sub setup_installer
         if $content !~ m'^my %FallbackPrereqs = \((?:\n[^;]+^)?\);$'mg;
 
     my $pos = pos($content);
+    my $version = $self->VERSION || '<self>';
 
     $content = substr($content, 0, $pos)
         . "\n\n"
+        . "# inserted by " . blessed($self) . ' ' . ($self->VERSION || '<self>') . "\n"
         . join("\n", $self->raw)
-        . "\n" . substr($content, $pos, -1);
+        . "\n" . substr($content, $pos);
 
     $file->content($content);
     return;
@@ -105,7 +104,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -229,6 +228,14 @@ L<Dist::Zilla::Plugin::MakeMaker>
 =item *
 
 L<ExtUtils::MakeMaker/Using Attributes and Parameters>
+
+=item *
+
+L<Dist::Zilla::Plugin::OSPrereqs>
+
+=item *
+
+L<Dist::Zilla::Plugin::PerlVersionPrereqs>
 
 =back
 
