@@ -38,8 +38,9 @@ no_index:
 provides:
   Dist::Zilla::Plugin::DynamicPrereqs:
     file: lib/Dist/Zilla/Plugin/DynamicPrereqs.pm
-    version: '0.006'
+    version: '0.007'
 requires:
+  Data::Dumper: '0'
   Dist::Zilla::Plugin::MakeMaker: '5.001'
   Dist::Zilla::Role::AfterBuild: '0'
   Dist::Zilla::Role::InstallTool: '0'
@@ -58,7 +59,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-DynamicPrereqs
   homepage: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs
   repository: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs.git
-version: '0.006'
+version: '0.007'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -81,7 +82,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/Git::NextVersion'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -93,7 +94,7 @@ x_Dist_Zilla:
           phase: build
           skip: []
       name: '@Author::ETHER/stale modules, build'
-      version: '0.024'
+      version: '0.026'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -104,7 +105,7 @@ x_Dist_Zilla:
           phase: release
           skip: []
       name: '@Author::ETHER/stale modules, release'
-      version: '0.024'
+      version: '0.026'
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Author::ETHER/ExecDir'
@@ -129,7 +130,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/Git::GatherDir'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Author::ETHER/MetaYAML'
@@ -480,7 +481,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/initial check'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
       config:
@@ -519,7 +520,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/after tests'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::CheckIssues
       name: '@Author::ETHER/CheckIssues'
@@ -560,21 +561,21 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/Git::Commit'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Git::Tag
       config:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v0.006
+          tag: v0.007
           tag_format: v%v%t
           tag_message: v%v%t
           time_zone: local
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/Git::Tag'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@Author::ETHER/GitHub::Update'
@@ -589,7 +590,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::ETHER/Git::Push'
-      version: '2.023'
+      version: '2.024'
     -
       class: Dist::Zilla::Plugin::Run::AfterRelease
       config:
@@ -606,15 +607,15 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Role::Bootstrap:
           distname: Dist-Zilla-Plugin-DynamicPrereqs
-          fallback: '1'
-          try_built: ~
+          fallback: '0'
+          try_built: '1'
           try_built_method: mtime
       name: Bootstrap::lib
       version: '1.001000'
     -
       class: Dist::Zilla::Plugin::DynamicPrereqs
       name: DynamicPrereqs
-      version: ~
+      version: '0.007'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

@@ -21,7 +21,7 @@ do { my $x = {
                                       'Dist::Zilla::Plugin::CheckStrictVersion' => '0',
                                       'Dist::Zilla::Plugin::ConfirmRelease' => '0',
                                       'Dist::Zilla::Plugin::CopyFilesFromRelease' => '0',
-                                      'Dist::Zilla::Plugin::DynamicPrereqs' => '0',
+                                      'Dist::Zilla::Plugin::DynamicPrereqs' => '0.007',
                                       'Dist::Zilla::Plugin::EOLTests' => '0',
                                       'Dist::Zilla::Plugin::ExecDir' => '0',
                                       'Dist::Zilla::Plugin::FileFinder::ByName' => '0',
@@ -100,6 +100,7 @@ do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
+                                      'Data::Dumper' => '0',
                                       'Dist::Zilla::Plugin::MakeMaker' => '5.001',
                                       'Dist::Zilla::Role::AfterBuild' => '0',
                                       'Dist::Zilla::Role::InstallTool' => '0',

@@ -18,6 +18,7 @@ my @files = (
     't/06-makemaker-awesome.t',
     't/07-unknown-arguments.t',
     't/08-empty-prereqs.t',
+    't/09-delimiter-whitespace.t',
     'xt/author/00-compile.t',
     'xt/author/clean-namespaces.t',
     'xt/author/no-tabs.t',

@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::DynamicPrereqs;
-# git description: v0.005-8-g1759da5
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.006';
+# git description: v0.006-3-gbd3464b
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.007';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # KEYWORDS: plugin distribution metadata MYMETA prerequisites Makefile.PL dynamic
 # vim: set ts=8 sw=4 tw=78 et :
@@ -38,7 +38,24 @@ has _extra_args => (
 
 sub mvp_multivalue_args { qw(raw) }
 
-sub mvp_aliases { +{ '-raw' => 'raw' } }
+sub mvp_aliases { +{ '-raw' => 'raw', '-delimiter' => 'delimiter' } }
+
+around BUILDARGS => sub
+{
+    my $orig = shift;
+    my $class = shift;
+
+    my $args = $class->$orig(@_);
+
+    use Data::Dumper;
+    local $Data::Dumper::Maxdepth = 2;
+    if (length(my $delimiter = delete $args->{delimiter}))
+    {
+        s/^\Q$delimiter\E// foreach @{$args->{raw}};
+    }
+
+    return $args;
+};
 
 sub metadata { return +{ dynamic_config => 1 } }
 
@@ -104,7 +121,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.006
+version 0.007
 
 =head1 SYNOPSIS
 
@@ -117,8 +134,9 @@ In your F<dist.ini>:
 or:
 
     [DynamicPrereqs]
-    -raw = $WriteMakefileArgs{TEST_REQUIRES}{'Devel::Cover'} = $FallbackPrereqs{'Devel::Cover'} = '0'
-    -raw = if $ENV{EXTENDED_TESTING};
+    -delimiter = |
+    -raw = |$WriteMakefileArgs{TEST_REQUIRES}{'Devel::Cover'} = $FallbackPrereqs{'Devel::Cover'} = '0'
+    -raw = |    if $ENV{EXTENDED_TESTING};
 
 =head1 DESCRIPTION
 
@@ -167,6 +185,14 @@ these modules to C<configure_requires> prereqs in metadata (e.g. via
 C<[Prereqs / ConfigureRequires]> in your F<dist.ini>).
 
 =for Pod::Coverage mvp_multivalue_args mvp_aliases metadata after_build setup_installer
+
+=head2 C<-delimiter>
+
+A string, usually a single character, which is stripped from the beginning of
+all C<-raw> lines. This is because the INI file format strips all leading
+whitespace from option values, so including this character at the front allows
+you to use leading whitespace in an option string, so you can indent blocks of
+code properly.
 
 =head1 WARNING: UNSTABLE API!
 
