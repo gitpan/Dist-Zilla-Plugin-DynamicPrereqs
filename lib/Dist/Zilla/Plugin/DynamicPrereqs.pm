@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::DynamicPrereqs;
-# git description: v0.006-3-gbd3464b
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.007';
+# git description: v0.007-3-g08e8f29
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.008';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # KEYWORDS: plugin distribution metadata MYMETA prerequisites Makefile.PL dynamic
 # vim: set ts=8 sw=4 tw=78 et :
@@ -47,9 +47,8 @@ around BUILDARGS => sub
 
     my $args = $class->$orig(@_);
 
-    use Data::Dumper;
-    local $Data::Dumper::Maxdepth = 2;
-    if (length(my $delimiter = delete $args->{delimiter}))
+    my $delimiter = delete $args->{delimiter};
+    if (defined $delimiter and length($delimiter))
     {
         s/^\Q$delimiter\E// foreach @{$args->{raw}};
     }
@@ -121,7 +120,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 

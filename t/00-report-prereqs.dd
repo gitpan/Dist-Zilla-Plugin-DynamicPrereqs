@@ -100,7 +100,6 @@ do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
-                                      'Data::Dumper' => '0',
                                       'Dist::Zilla::Plugin::MakeMaker' => '5.001',
                                       'Dist::Zilla::Role::AfterBuild' => '0',
                                       'Dist::Zilla::Role::InstallTool' => '0',

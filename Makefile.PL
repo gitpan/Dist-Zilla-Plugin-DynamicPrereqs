@@ -20,7 +20,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::DynamicPrereqs",
   "PREREQ_PM" => {
-    "Data::Dumper" => 0,
     "Dist::Zilla::Plugin::MakeMaker" => "5.001",
     "Dist::Zilla::Role::AfterBuild" => 0,
     "Dist::Zilla::Role::InstallTool" => 0,
@@ -46,7 +45,7 @@ my %WriteMakefileArgs = (
     "Test::Requires" => 0,
     "if" => 0
   },
-  "VERSION" => "0.007",
+  "VERSION" => "0.008",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -54,7 +53,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Data::Dumper" => 0,
   "Dist::Zilla::Plugin::MakeMaker" => "5.001",
   "Dist::Zilla::Role::AfterBuild" => 0,
   "Dist::Zilla::Role::InstallTool" => 0,
@@ -79,7 +77,7 @@ my %FallbackPrereqs = (
   "warnings" => 0
 );
 
-# inserted by Dist::Zilla::Plugin::DynamicPrereqs 0.007
+# inserted by Dist::Zilla::Plugin::DynamicPrereqs 0.008
 $WriteMakefileArgs{PREREQ_PM}{'Dist::Zilla'} = $FallbackPrereqs{'Dist::Zilla'} = '5.008'
     if eval { require Dist::Zilla; Dist::Zilla->VERSION == '5.007' };
 

@@ -17,7 +17,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: '0'
 dynamic_config: 1
-generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060'
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142690'
 keywords:
   - plugin
   - distribution
@@ -38,9 +38,8 @@ no_index:
 provides:
   Dist::Zilla::Plugin::DynamicPrereqs:
     file: lib/Dist/Zilla/Plugin/DynamicPrereqs.pm
-    version: '0.007'
+    version: '0.008'
 requires:
-  Data::Dumper: '0'
   Dist::Zilla::Plugin::MakeMaker: '5.001'
   Dist::Zilla::Role::AfterBuild: '0'
   Dist::Zilla::Role::InstallTool: '0'
@@ -59,7 +58,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-DynamicPrereqs
   homepage: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs
   repository: https://github.com/karenetheridge/Dist-Zilla-Plugin-DynamicPrereqs.git
-version: '0.007'
+version: '0.008'
 x_Dist_Zilla:
   perl:
     version: '5.021003'
@@ -94,7 +93,7 @@ x_Dist_Zilla:
           phase: build
           skip: []
       name: '@Author::ETHER/stale modules, build'
-      version: '0.026'
+      version: '0.027'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -105,7 +104,7 @@ x_Dist_Zilla:
           phase: release
           skip: []
       name: '@Author::ETHER/stale modules, release'
-      version: '0.026'
+      version: '0.027'
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Author::ETHER/ExecDir'
@@ -568,7 +567,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: v0.007
+          tag: v0.008
           tag_format: v%v%t
           tag_message: v%v%t
           time_zone: local
@@ -615,7 +614,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::DynamicPrereqs
       name: DynamicPrereqs
-      version: '0.007'
+      version: '0.008'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
