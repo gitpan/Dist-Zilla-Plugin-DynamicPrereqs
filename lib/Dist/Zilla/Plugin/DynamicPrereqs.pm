@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::DynamicPrereqs;
-# git description: v0.007-3-g08e8f29
-$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.008';
+# git description: v0.008-2-g5c8595d
+$Dist::Zilla::Plugin::DynamicPrereqs::VERSION = '0.009';
 # ABSTRACT: Specify dynamic (user-side) prerequisites for your distribution
 # KEYWORDS: plugin distribution metadata MYMETA prerequisites Makefile.PL dynamic
 # vim: set ts=8 sw=4 tw=78 et :
@@ -120,7 +120,7 @@ Dist::Zilla::Plugin::DynamicPrereqs - Specify dynamic (user-side) prerequisites 
 
 =head1 VERSION
 
-version 0.008
+version 0.009
 
 =head1 SYNOPSIS
 
@@ -186,6 +186,8 @@ C<[Prereqs / ConfigureRequires]> in your F<dist.ini>).
 =for Pod::Coverage mvp_multivalue_args mvp_aliases metadata after_build setup_installer
 
 =head2 C<-delimiter>
+
+(Available since version 0.007)
 
 A string, usually a single character, which is stripped from the beginning of
 all C<-raw> lines. This is because the INI file format strips all leading
